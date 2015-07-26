@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.iviettech_final_project.MainActivity"
+    tools:context="com.example.iviettech_final_project.NotificationActivity"
     tools:ignore="MergeRootFrame" >
 
     <LinearLayout
@@ -14,7 +14,6 @@
 
         <ImageView
             android:id="@+id/iv_main"
-            android:background="#BB0000"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -36,6 +35,7 @@
 
         <ImageView
             android:id="@+id/iv_notification"
+            android:background="#BB0000"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

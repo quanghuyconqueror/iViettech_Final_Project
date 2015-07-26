@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.iviettech_final_project.MainActivity"
+    tools:context="com.example.iviettech_final_project.MapActivity"
     tools:ignore="MergeRootFrame" >
 
     <LinearLayout
@@ -14,7 +14,6 @@
 
         <ImageView
             android:id="@+id/iv_main"
-            android:background="#BB0000"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -24,6 +23,7 @@
             android:id="@+id/iv_map"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="#BB0000"
             android:layout_weight="1"
             android:src="@drawable/ic_home_dulich_khudulich" />
 

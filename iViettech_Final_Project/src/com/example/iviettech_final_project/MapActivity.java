@@ -13,8 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.os.Build;
 
-public class MainActivity extends Activity {
-	
+public class MapActivity extends Activity {
 	ImageView m_ivMain, m_ivMap, m_ivSearch, m_ivNotification;
 	ImageView m_ivCategory, m_ivLogin;
    
@@ -22,7 +21,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 		
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);    
+        setContentView(R.layout.activity_map);
         
         m_ivMain = (ImageView) findViewById(R.id.iv_main);
         m_ivMap = (ImageView) findViewById(R.id.iv_map);
@@ -37,29 +36,28 @@ public class MainActivity extends Activity {
         m_ivNotification.setOnClickListener(new FoodClickListener());
         m_ivCategory.setOnClickListener(new FoodClickListener());
         m_ivLogin.setOnClickListener(new FoodClickListener());
-    }
+		
+	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.map, menu);
+		return true;
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
- 
 
 }
