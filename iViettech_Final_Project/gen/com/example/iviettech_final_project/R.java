@@ -31,7 +31,7 @@ public final class R {
         public static final int ic_launcher=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f080007;
+        public static final int action_settings=0x7f08000e;
         public static final int container=0x7f080000;
         public static final int iv_category=0x7f080005;
         public static final int iv_login=0x7f080006;
@@ -39,6 +39,13 @@ public final class R {
         public static final int iv_map=0x7f080002;
         public static final int iv_notification=0x7f080004;
         public static final int iv_search=0x7f080003;
+        public static final int main_pager=0x7f080007;
+        public static final int search_pager=0x7f080008;
+        public static final int tv_search_collection=0x7f08000b;
+        public static final int tv_search_found=0x7f08000d;
+        public static final int tv_search_hightlight=0x7f080009;
+        public static final int tv_search_new=0x7f08000a;
+        public static final int tv_search_suggest=0x7f08000c;
     }
     public static final class layout {
         public static final int activity_category=0x7f030000;
@@ -47,6 +54,11 @@ public final class R {
         public static final int activity_map=0x7f030003;
         public static final int activity_notification=0x7f030004;
         public static final int activity_search=0x7f030005;
+        public static final int main_collection=0x7f030006;
+        public static final int main_highlight=0x7f030007;
+        public static final int main_new=0x7f030008;
+        public static final int search_found=0x7f030009;
+        public static final int search_suggest=0x7f03000a;
     }
     public static final class menu {
         public static final int category=0x7f070000;

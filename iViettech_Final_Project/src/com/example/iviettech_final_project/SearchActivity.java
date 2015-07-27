@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,29 +16,16 @@ import android.widget.ImageView;
 import android.os.Build;
 
 public class SearchActivity extends Activity {
-	ImageView m_ivMain, m_ivMap, m_ivSearch, m_ivNotification;
-	ImageView m_ivCategory, m_ivLogin;
+	
    
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        
-        m_ivMain = (ImageView) findViewById(R.id.iv_main);
-        m_ivMap = (ImageView) findViewById(R.id.iv_map);
-        m_ivSearch = (ImageView) findViewById(R.id.iv_search);
-        m_ivNotification = (ImageView) findViewById(R.id.iv_notification);
-        m_ivCategory = (ImageView) findViewById(R.id.iv_category);
-        m_ivLogin = (ImageView) findViewById(R.id.iv_login);
-        
-        m_ivMain.setOnClickListener(new FoodClickListener());
-        m_ivMap.setOnClickListener(new FoodClickListener());
-        m_ivSearch.setOnClickListener(new FoodClickListener());
-        m_ivNotification.setOnClickListener(new FoodClickListener());
-        m_ivCategory.setOnClickListener(new FoodClickListener());
-        m_ivLogin.setOnClickListener(new FoodClickListener());
-		
+        SearchPagerAdapter searchPagerAdapter = new SearchPagerAdapter();
+        ViewPager searchPager = (ViewPager) findViewById(R.id.search_pager);
+        searchPager.setAdapter(searchPagerAdapter);
 
 	}
 
