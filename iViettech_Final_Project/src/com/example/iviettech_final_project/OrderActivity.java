@@ -13,29 +13,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.os.Build;
 
-public class NotificationActivity extends Activity {
-	ImageView m_ivMain, m_ivMap, m_ivSearch, m_ivNotification;
-	ImageView m_ivCategory, m_ivLogin;
+public class OrderActivity extends Activity {
+	
    
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		
         super.onCreate(savedInstanceState);	
-		setContentView(R.layout.activity_notification);
+		setContentView(R.layout.activity_order);
 		
-		m_ivMain = (ImageView) findViewById(R.id.iv_main);
-        m_ivMap = (ImageView) findViewById(R.id.iv_map);
-        m_ivSearch = (ImageView) findViewById(R.id.iv_search);
-        m_ivNotification = (ImageView) findViewById(R.id.iv_notification);
-        m_ivCategory = (ImageView) findViewById(R.id.iv_category);
-        m_ivLogin = (ImageView) findViewById(R.id.iv_login);
-        
-        m_ivMain.setOnClickListener(new FoodClickListener());
-        m_ivMap.setOnClickListener(new FoodClickListener());
-        m_ivSearch.setOnClickListener(new FoodClickListener());
-        m_ivNotification.setOnClickListener(new FoodClickListener());
-        m_ivCategory.setOnClickListener(new FoodClickListener());
-        m_ivLogin.setOnClickListener(new FoodClickListener());
+		
 		
 
 

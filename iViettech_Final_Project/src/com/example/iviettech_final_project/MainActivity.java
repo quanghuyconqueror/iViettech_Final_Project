@@ -1,20 +1,15 @@
 package com.example.iviettech_final_project;
 
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+
+import android.app.TabActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.os.Build;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 
-public class MainActivity extends Activity {
+public class MainActivity extends TabActivity {
 
    
 	@Override
@@ -22,9 +17,54 @@ public class MainActivity extends Activity {
 		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);    
-        MainPagerAdapter mainPagerAdapter = new MainPagerAdapter();
-        ViewPager mainPager = (ViewPager) findViewById(R.id.main_pager);
-        mainPager.setAdapter(mainPagerAdapter);
+        
+        //create tab host
+        TabHost tabHost = getTabHost();
+        
+        //tab for show
+        TabSpec showSpec = tabHost.newTabSpec("Show");
+        showSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_dulich_diadanh));
+        Intent showIntent = new Intent(this, ShowActivity.class);
+        showSpec.setContent(showIntent);
+        
+        //tab for search
+        TabSpec searchSpec = tabHost.newTabSpec("Search");
+        searchSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_dulich_khudulich));
+        Intent searchIntent = new Intent(this, SearchActivity.class);
+        searchSpec.setContent(searchIntent);
+        
+        //tab for order
+        TabSpec orderSpec = tabHost.newTabSpec("Order");
+        orderSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_dulich_ticket));
+        Intent orderIntent = new Intent(this, OrderActivity.class);
+        orderSpec.setContent(orderIntent);
+        
+        //tab for map
+        TabSpec mapSpec = tabHost.newTabSpec("Map");
+        mapSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_entertaiment));
+        Intent mapIntent = new Intent(this, MapActivity.class);
+        mapSpec.setContent(mapIntent);
+        
+        //tab for category
+        TabSpec categorySpec = tabHost.newTabSpec("Category");
+        categorySpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_giaitri_cinema));
+        Intent categoryIntent = new Intent(this, CategoryActivity.class);
+        categorySpec.setContent(categoryIntent);
+        
+        //tab for login
+        TabSpec loginSpec = tabHost.newTabSpec("Login");
+        loginSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_giaitri_congvien));
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        loginSpec.setContent(loginIntent);
+        
+        //add tab to tabhost
+        tabHost.addTab(showSpec);
+        tabHost.addTab(searchSpec);
+        tabHost.addTab(orderSpec);
+        tabHost.addTab(mapSpec);
+        tabHost.addTab(categorySpec);
+        tabHost.addTab(loginSpec);
+   
 
     }
 

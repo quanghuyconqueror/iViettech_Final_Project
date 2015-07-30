@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-public class SearchPagerAdapter extends android.support.v4.view.PagerAdapter{
+public class ShowPagerAdapter extends android.support.v4.view.PagerAdapter {
 
 	@Override
 	public int getCount() {
-		return 2;
+		return 3;
 	}
 
 	@Override
@@ -24,25 +24,29 @@ public class SearchPagerAdapter extends android.support.v4.view.PagerAdapter{
 		int resID = 0;
 		switch (position) {
 		case 0:
-			resID = R.layout.search_suggest;
+			resID = R.layout.show_highlight;
+			break;
+
+		case 1:
+			resID = R.layout.show_new;
 			break;
 			
-		case 1:
-			resID = R.layout.search_found;
+		case 2:
+			resID = R.layout.show_collection;
 			break;
 		}
 		
 		View view = li.inflate(resID, null);
-	
+		
 		container.addView(view, 0);
 		return view;
+
+		
 	}
 	
-	//destroy view don't display
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
 		container.removeView((View) object);
 	}
 	
-
 }

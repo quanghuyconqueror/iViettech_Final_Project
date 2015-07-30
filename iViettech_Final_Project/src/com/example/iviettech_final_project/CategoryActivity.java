@@ -1,5 +1,7 @@
 package com.example.iviettech_final_project;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -9,14 +11,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.os.Build;
 
-public class CategoryActivity extends Activity {
+public class CategoryActivity extends Activity implements OnItemClickListener {
 	
-	ImageView m_ivMain, m_ivMap, m_ivSearch, m_ivNotification;
-	ImageView m_ivCategory, m_ivLogin;
+	
+	private ListView lvCategory;
+	private CategoryArrayAdapter adapterCategory;
+	
    
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +32,20 @@ public class CategoryActivity extends Activity {
         super.onCreate(savedInstanceState);	
 		setContentView(R.layout.activity_category);
 		
-		m_ivMain = (ImageView) findViewById(R.id.iv_main);
-        m_ivMap = (ImageView) findViewById(R.id.iv_map);
-        m_ivSearch = (ImageView) findViewById(R.id.iv_search);
-        m_ivNotification = (ImageView) findViewById(R.id.iv_notification);
-        m_ivCategory = (ImageView) findViewById(R.id.iv_category);
-        m_ivLogin = (ImageView) findViewById(R.id.iv_login);
         
-        m_ivMain.setOnClickListener(new FoodClickListener());
-        m_ivMap.setOnClickListener(new FoodClickListener());
-        m_ivSearch.setOnClickListener(new FoodClickListener());
-        m_ivNotification.setOnClickListener(new FoodClickListener());
-        m_ivCategory.setOnClickListener(new FoodClickListener());
-        m_ivLogin.setOnClickListener(new FoodClickListener());
+        lvCategory = (ListView) findViewById(R.id.lv_category);
+        
+        ArrayList<CategoryItem> itemArray = new ArrayList<CategoryItem>();
+        itemArray.add(new CategoryItem("Bộ sưu tập", R.drawable.ic_home_dulich_ticket));
+        itemArray.add(new CategoryItem("Khuyến mãi", R.drawable.ic_home_giaitri_cinema));
+        itemArray.add(new CategoryItem("Xem gần đây", R.drawable.ic_launcher));
+        itemArray.add(new CategoryItem("Thêm địa điểm", R.drawable.ic_home_entertaiment));
+        itemArray.add(new CategoryItem("Cài đặt", R.drawable.ic_home_dulich_ticket));
+        itemArray.add(new CategoryItem("Giới thiệu", R.drawable.ic_home_dulich_khudulich));
+        
+        adapterCategory = new CategoryArrayAdapter(this, R.layout.category_listview, itemArray);
+        lvCategory.setAdapter(adapterCategory);
+        lvCategory.setOnItemClickListener(this);
 		
 
 
@@ -60,6 +69,12 @@ public class CategoryActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		
+		
 	}
 
 	

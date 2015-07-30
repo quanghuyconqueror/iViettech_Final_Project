@@ -22,43 +22,44 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_home_dulich_diadanh=0x7f020000;
-        public static final int ic_home_dulich_khudulich=0x7f020001;
-        public static final int ic_home_dulich_ticket=0x7f020002;
-        public static final int ic_home_entertaiment=0x7f020003;
-        public static final int ic_home_giaitri_cinema=0x7f020004;
-        public static final int ic_home_giaitri_congvien=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
+        public static final int background_food1=0x7f020000;
+        public static final int ic_home_dulich_diadanh=0x7f020001;
+        public static final int ic_home_dulich_khudulich=0x7f020002;
+        public static final int ic_home_dulich_ticket=0x7f020003;
+        public static final int ic_home_entertaiment=0x7f020004;
+        public static final int ic_home_giaitri_cinema=0x7f020005;
+        public static final int ic_home_giaitri_congvien=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000e;
+        public static final int RelativeLayout1=0x7f080004;
+        public static final int action_settings=0x7f08000c;
         public static final int container=0x7f080000;
-        public static final int iv_category=0x7f080005;
-        public static final int iv_login=0x7f080006;
-        public static final int iv_main=0x7f080001;
-        public static final int iv_map=0x7f080002;
-        public static final int iv_notification=0x7f080004;
-        public static final int iv_search=0x7f080003;
-        public static final int main_pager=0x7f080007;
-        public static final int search_pager=0x7f080008;
+        public static final int iv_category_item=0x7f080005;
+        public static final int lv_category=0x7f080001;
+        public static final int search_pager=0x7f080002;
+        public static final int show_pager=0x7f080003;
+        public static final int tv_category_item=0x7f080006;
         public static final int tv_search_collection=0x7f08000b;
-        public static final int tv_search_found=0x7f08000d;
+        public static final int tv_search_found=0x7f080008;
         public static final int tv_search_hightlight=0x7f080009;
         public static final int tv_search_new=0x7f08000a;
-        public static final int tv_search_suggest=0x7f08000c;
+        public static final int tv_search_suggest=0x7f080007;
     }
     public static final class layout {
         public static final int activity_category=0x7f030000;
         public static final int activity_login=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_map=0x7f030003;
-        public static final int activity_notification=0x7f030004;
+        public static final int activity_order=0x7f030004;
         public static final int activity_search=0x7f030005;
-        public static final int main_collection=0x7f030006;
-        public static final int main_highlight=0x7f030007;
-        public static final int main_new=0x7f030008;
-        public static final int search_found=0x7f030009;
-        public static final int search_suggest=0x7f03000a;
+        public static final int activity_show=0x7f030006;
+        public static final int category_listview=0x7f030007;
+        public static final int search_found=0x7f030008;
+        public static final int search_suggest=0x7f030009;
+        public static final int show_collection=0x7f03000a;
+        public static final int show_highlight=0x7f03000b;
+        public static final int show_new=0x7f03000c;
     }
     public static final class menu {
         public static final int category=0x7f070000;
@@ -67,6 +68,7 @@ public final class R {
         public static final int map=0x7f070003;
         public static final int notification=0x7f070004;
         public static final int search=0x7f070005;
+        public static final int show=0x7f070006;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -77,6 +79,7 @@ public final class R {
         public static final int title_activity_map=0x7f050007;
         public static final int title_activity_notification=0x7f050006;
         public static final int title_activity_search=0x7f050003;
+        public static final int title_activity_show=0x7f050008;
     }
     public static final class style {
         /** 
