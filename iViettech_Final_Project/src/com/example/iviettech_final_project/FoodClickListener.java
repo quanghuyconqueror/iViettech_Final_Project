@@ -8,7 +8,19 @@ import android.view.View.OnClickListener;
 public class FoodClickListener implements OnClickListener {
 	@Override
 	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.tv_sign_guest:
+			LoginGuest();
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	public void LoginGuest() {
 		
 	}
 
 }
+
