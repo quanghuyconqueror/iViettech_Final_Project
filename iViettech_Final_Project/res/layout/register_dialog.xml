@@ -188,7 +188,14 @@
                 android:ems="10" >
             </EditText>
         </TableRow>
+
     </TableLayout>
+
+    <TextView
+        android:id="@+id/tv_register_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
 
     <RelativeLayout
         android:id="@+id/RelativeLayout1"

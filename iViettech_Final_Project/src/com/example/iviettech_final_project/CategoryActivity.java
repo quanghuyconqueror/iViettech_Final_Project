@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -29,8 +30,8 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		
-        super.onCreate(savedInstanceState);	
-		setContentView(R.layout.activity_category);
+        super.onCreate(savedInstanceState);		
+        setContentView(R.layout.activity_category);
 		
         
         lvCategory = (ListView) findViewById(R.id.lv_category);
