@@ -24,13 +24,13 @@ public class MainActivity extends TabActivity {
         
         //tab for show
         TabSpec showSpec = tabHost.newTabSpec("Show");
-        showSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_dulich_diadanh));
+        showSpec.setIndicator("", getResources().getDrawable(R.drawable.food_normal));
         Intent showIntent = new Intent(this, ShowActivity.class);
         showSpec.setContent(showIntent);
         
         //tab for search
         TabSpec searchSpec = tabHost.newTabSpec("Search");
-        searchSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_dulich_khudulich));
+        searchSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_search));
         Intent searchIntent = new Intent(this, SearchActivity.class);
         searchSpec.setContent(searchIntent);
         
@@ -42,7 +42,7 @@ public class MainActivity extends TabActivity {
         
         //tab for map
         TabSpec mapSpec = tabHost.newTabSpec("Map");
-        mapSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_entertaiment));
+        mapSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_map));
         Intent mapIntent = new Intent(this, MapActivity.class);
         mapSpec.setContent(mapIntent);
         
@@ -54,7 +54,7 @@ public class MainActivity extends TabActivity {
         
         //tab for login
         TabSpec loginSpec = tabHost.newTabSpec("Login");
-        loginSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_home_giaitri_congvien));
+        loginSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_user));
         Intent loginIntent = new Intent(this, LoginActivity.class);
         loginSpec.setContent(loginIntent);
         

@@ -8,5 +8,11 @@
     tools:context="com.example.iviettech_final_project.OrderActivity"
     tools:ignore="MergeRootFrame" >
 
+    <Button
+        android:id="@+id/bt_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
 </LinearLayout>
 

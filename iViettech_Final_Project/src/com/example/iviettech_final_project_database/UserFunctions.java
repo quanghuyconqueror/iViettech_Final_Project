@@ -5,13 +5,17 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.util.Log;
 
 public class UserFunctions {
 
 	private JSONParser jsonParser;
+	
+	private final static String TAG_NAME = "UserFunctions";
 
 	private static String loginURL = "http://enddev.site50.net/iViettechFinalProject/";
 	private static String registerURL = "http://enddev.site50.net/iViettechFinalProject/";
@@ -19,6 +23,7 @@ public class UserFunctions {
 
 	private static String login_tag = "login";
 	private static String register_tag = "register";
+	private static String search_city_tag = "get_restaurant_by_city";
 
 	// Hàm xây dựng khởi tạo đối tượng
 	public UserFunctions() {
@@ -35,6 +40,15 @@ public class UserFunctions {
 		JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
 		// Trả về đối tượng là 1 JSONObject
 		return json;
+	}
+	
+	public ArrayList<JSONObject> searchRestaurantByCity(String city) {
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", search_city_tag));
+		params.add(new BasicNameValuePair("city", city));
+		ArrayList<JSONObject> jsonArray = jsonParser.getJSONArrayFromUrl(loginURL, params);
+		// Trả về đối tượng là 1 JSONObject
+		return jsonArray;
 	}
 
 	public JSONObject registerUser(String username, String password,
@@ -55,6 +69,7 @@ public class UserFunctions {
 		params.add(new BasicNameValuePair("avatar", avatar));
 		
 		JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
+		Log.i(TAG_NAME, "Lay Json thanh cong");
 		// Trả về đối tượng là 1 JSONObject
 		return json;
 	}
@@ -72,7 +87,7 @@ public class UserFunctions {
 	// Thực hiện việc logoutUser bằng cách xóa dữ liệu database
 	public boolean logoutUser(Context context) {
 		DatabaseHandler db = new DatabaseHandler(context);
-		db.resetTables();
+		db.resetTableUser();
 		return true;
 	}
 

@@ -1,7 +1,9 @@
 eclipse.preferences.version=1
 encoding//src/com/example/iviettech_final_project/CategoryActivity.java=UTF-8
+encoding//src/com/example/iviettech_final_project/LoginActivity.java=UTF-8
 encoding//src/com/example/iviettech_final_project/MapActivity.java=UTF-8
 encoding//src/com/example/iviettech_final_project/RegisterDialog.java=UTF-8
+encoding//src/com/example/iviettech_final_project/SearchActivity.java=UTF-8
 encoding//src/com/example/iviettech_final_project_database/DatabaseHandler.java=UTF-8
 encoding//src/com/example/iviettech_final_project_database/JSONParser.java=UTF-8
 encoding//src/com/example/iviettech_final_project_database/UserFunctions.java=UTF-8
