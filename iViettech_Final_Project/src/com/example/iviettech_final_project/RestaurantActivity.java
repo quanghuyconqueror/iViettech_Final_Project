@@ -1,17 +1,22 @@
 package com.example.iviettech_final_project;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class RestaurantActivity extends Activity {
-
+	Restaurant restaurant;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_restaurant);
+		Intent calledIntent = getIntent();
+		restaurant = (Restaurant) calledIntent.getSerializableExtra("Restaurant");
+		Toast.makeText(this, restaurant.toString(), Toast.LENGTH_LONG).show();
 		ShowPagerAdapter showPagerAdapter = new ShowPagerAdapter();
 	    ViewPager showPager = (ViewPager) findViewById(R.id.show_image_res);
 	    showPager.setAdapter(showPagerAdapter);

@@ -2,35 +2,28 @@ package com.example.iviettech_final_project;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iviettech_final_project_database.DatabaseHandler;
 import com.example.iviettech_final_project_database.UserFunctions;
 
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.os.Build;
-
-public class SearchActivity extends Activity {
+public class SearchActivity extends Activity implements OnItemClickListener {
 	private static String KEY_SUCCESS = "success";
 
 	// Restaurant Table Columns names
@@ -58,13 +51,14 @@ public class SearchActivity extends Activity {
 		setContentView(R.layout.activity_search);
 
 		citySearch = (EditText) findViewById(R.id.et_search);
-		restaurantListView = (ListView) findViewById(R.id.listview_restaurant);
+		restaurantListView = (ListView) findViewById(R.id.listview_restaurant);	
 		DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 		db.resetTableRestaurant();
 		restaurants = db.getRestaurantDetails();
 		restaurantArrayAdapter = new RestaurantArrayAdapter(this,
 				R.layout.restaurant_listview, restaurants);
 		restaurantListView.setAdapter(restaurantArrayAdapter);
+		restaurantListView.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -129,8 +123,12 @@ public class SearchActivity extends Activity {
 					res.setRestaurantName(json_res.getString(KEY_RESTAURANT_NAME));
 					res.setTimeClose(json_res.getString(KEY_TIME_CLOSE));
 					res.setTimeOpen(json_res.getString(KEY_TIME_OPEN));
+					res.setLatX(json_res.getString(KEY_LAT_X));
+					res.setLatY(json_res.getString(KEY_LAT_Y));
+					res.setCity(json_res.getString(KEY_CITY_RES));
 					res.setRank(json_res.getString(KEY_RANK));
 					res.setPhone(json_res.getString(KEY_PHONE));
+					res.setAddress(json_res.getString(KEY_ADDRESS));
 					res.setLogo(json_res.getString(KEY_LOGO));
 					restaurants.add(res);
 				}
@@ -164,6 +162,16 @@ public class SearchActivity extends Activity {
 		new SearchTask().execute();
 		
 
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3) {
+		// TODO Auto-generated method stub
+		Restaurant restaurant = restaurants.get(position);
+		Intent restaurantIntent = new Intent(SearchActivity.this, RestaurantActivity.class);
+		restaurantIntent.putExtra("Restaurant", restaurant);
+		startActivity(restaurantIntent);
+	
 	}
 
 }

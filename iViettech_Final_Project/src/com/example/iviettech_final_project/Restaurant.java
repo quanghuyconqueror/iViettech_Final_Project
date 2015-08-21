@@ -1,6 +1,8 @@
 package com.example.iviettech_final_project;
 
-public class Restaurant {
+import java.io.Serializable;
+
+public class Restaurant implements Serializable{
 	private String restaurantName;
 	private String timeOpen;
 	private String timeClose;
@@ -71,4 +73,14 @@ public class Restaurant {
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
+	@Override
+	public String toString() {
+		return "Restaurant [restaurantName=" + restaurantName + ", timeOpen="
+				+ timeOpen + ", timeClose=" + timeClose + ", latX=" + latX
+				+ ", latY=" + latY + ", city=" + city + ", rank=" + rank
+				+ ", phone=" + phone + ", address=" + address + ", logo="
+				+ logo + "]";
+	}
+	
+	
 }

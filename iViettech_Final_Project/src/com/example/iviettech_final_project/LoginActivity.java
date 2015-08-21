@@ -44,8 +44,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		super.onCreate(savedInstanceState);
 
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_login);
 
 		username = (EditText) findViewById(R.id.et_username);
