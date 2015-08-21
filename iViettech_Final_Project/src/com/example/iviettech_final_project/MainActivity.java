@@ -52,11 +52,11 @@ public class MainActivity extends TabActivity {
         Intent categoryIntent = new Intent(this, CategoryActivity.class);
         categorySpec.setContent(categoryIntent);
         
-        //tab for login
-        TabSpec loginSpec = tabHost.newTabSpec("Login");
-        loginSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_user));
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        loginSpec.setContent(loginIntent);
+        //tab for user
+        TabSpec userSpec = tabHost.newTabSpec("User");
+        userSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_user));
+        Intent userIntent = new Intent(this, UserActivity.class);
+        userSpec.setContent(userIntent);
         
         //add tab to tabhost
         tabHost.addTab(showSpec);
@@ -64,7 +64,7 @@ public class MainActivity extends TabActivity {
         tabHost.addTab(orderSpec);
         tabHost.addTab(mapSpec);
         tabHost.addTab(categorySpec);
-        tabHost.addTab(loginSpec);
+        tabHost.addTab(userSpec);
    
 
     }

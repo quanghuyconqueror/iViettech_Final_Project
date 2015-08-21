@@ -11,5 +11,6 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_show">ShowActivity</string>
     <string name="title_activity_restaurant">RestaurantActivity</string>
+    <string name="title_activity_user">UserActivity</string>
 
 </resources>

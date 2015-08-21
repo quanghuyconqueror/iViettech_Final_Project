@@ -8,6 +8,7 @@ import com.example.iviettech_final_project_database.UserFunctions;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,16 +19,19 @@ import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity implements OnClickListener {
 	Button createAccountButton;
 	Button loginButton;
 	Button forgetPasswordButton;
+	TextView loginGuest;
 
 	EditText username, password;
 
 	private static String KEY_SUCCESS = "success";
+	private static final String KEY_IS_KEEP = "is_keep";
 	private static final String KEY_ID = "id";
 	private static final String KEY_USERNAME = "username";
 	private static final String KEY_PASSWORD = "password";
@@ -56,6 +60,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		createAccountButton.setOnClickListener(this);
 		loginButton.setOnClickListener(this);
 		forgetPasswordButton.setOnClickListener(this);
+		loginGuest = (TextView) findViewById(R.id.tv_sign_guest);
+		loginGuest.setOnClickListener(this);
 
 	}
 
@@ -96,6 +102,20 @@ public class LoginActivity extends Activity implements OnClickListener {
 								json_user.getString(KEY_AVATAR));   
 			        	
 			        	final String userLogin = json_user.getString(KEY_USERNAME);
+			        	SharedPreferences settings = getApplicationContext().getSharedPreferences("UserPreferences", 0);
+			        	SharedPreferences.Editor editor = settings.edit();
+			        	editor.putBoolean(KEY_IS_KEEP, true);
+			        	editor.putString(KEY_USERNAME, json_user.getString(KEY_USERNAME));
+			        	editor.putString(KEY_PASSWORD, json_user.getString(KEY_PASSWORD));
+			        	editor.putString(KEY_EMAIL, json_user.getString(KEY_EMAIL));
+			        	editor.putString(KEY_FIRSTNAME, json_user.getString(KEY_FIRSTNAME));
+			        	editor.putString(KEY_LASTNAME, json_user.getString(KEY_LASTNAME));
+			        	editor.putString(KEY_CITY, json_user.getString(KEY_CITY));
+			        	editor.putString(KEY_GENDER, json_user.getString(KEY_GENDER));
+			        	editor.putString(KEY_AGE, json_user.getString(KEY_AGE));
+			        	editor.putString(KEY_AVATAR, json_user.getString(KEY_AVATAR));
+			        	editor.apply();
+			        	
 			        	runOnUiThread(new Runnable() {
 							
 							@Override
@@ -104,9 +124,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 							}
 						});
 			        	
-			        	Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
-			        	mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			        	startActivity(mainActivity);	
+			        	startMainActivity();	
 			        	
 			 	}
 			 	else {
@@ -169,11 +187,21 @@ public class LoginActivity extends Activity implements OnClickListener {
 					
 				}
 			}).start();
-			
+			break;
+		
+		case R.id.tv_sign_guest:
+			startMainActivity();
+			break;
 		default:
 			break;
 		}
 
+	}
+	
+	private void startMainActivity() {
+		Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+    	mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    	startActivity(mainActivity);
 	}
 
 }
