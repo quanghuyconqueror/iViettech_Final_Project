@@ -12,12 +12,10 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/textView1"
+            android:id="@+id/bt_search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:onClick="search"
-            android:text="Search" />
+            android:gravity="center" />
 
         <EditText
             android:id="@+id/et_search"

@@ -3,25 +3,78 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    >
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#00FFFF" >
 
+        <Button
+            android:id="@+id/btnback"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="3"
+            android:background="@drawable/ic_back1" />
+
+            <TextView
+                android:id="@+id/txtname"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/bt_location_res"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+				android:background="@drawable/ic_gg11"
+                android:layout_weight="3" />
+
+              </LinearLayout>
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_weight="1" >
 
             <android.support.v4.view.ViewPager
-	    android:id="@+id/show_image_res"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent" >
-	</android.support.v4.view.ViewPager>
+                android:id="@+id/show_image_res"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
             
     </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txt_time_open_close"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/txt_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/txt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
         </LinearLayout>
 
 </LinearLayout>

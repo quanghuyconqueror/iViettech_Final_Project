@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -86,6 +87,7 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
                 	markerOptions[i].icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                 	markers[i] = googleMap.addMarker(markerOptions[i]);
                 }
+        		
         		LatLng test = new LatLng(16.073445, 108.149839);
         		MarkerOptions option = new MarkerOptions();
         		option.position(test);
@@ -94,6 +96,18 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
         		option.alpha(0.8f);
         		option.rotation(90);	
         		Marker marker = googleMap.addMarker(option);
+        		
+        		Intent calledIntent = getIntent();
+        		String calledActivity = calledIntent.getStringExtra("ClassForm");
+        		Log.i("MapActivity", calledActivity);
+        		Log.i("MapActivity", RestaurantActivity.class.toString());
+        		if (calledActivity.equals(RestaurantActivity.class.toString())) {
+        			Restaurant res = (Restaurant) calledIntent.getSerializableExtra("Restaurant");
+        			double latX = Double.parseDouble(res.getLatX());
+                	double latY = Double.parseDouble(res.getLatY()); 
+                	moveCameraToLatLng(latX, latY, res.getRestaurantName(), res.getAddress());
+        		}
+        		
         		googleMap.setOnMarkerClickListener(this);
         		moveCameraToCurrentPosition();
         	}
@@ -148,6 +162,19 @@ public class MapActivity extends Activity implements OnMarkerClickListener {
 			googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 		}
 		
+	}
+	
+	private void moveCameraToLatLng(double latitude, double longitude, String title, String snippet) {
+		
+		Log.i("MapActivity", "moveToLatlng");
+		LatLng latLng = new LatLng(latitude, longitude);
+		MarkerOptions markerOps = new MarkerOptions();
+		markerOps.position(latLng);
+		markerOps.title(title).snippet(snippet);
+		markerOps.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+    	Marker markerRes = googleMap.addMarker(markerOps);
+    	googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+		googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 	}
 	
 	

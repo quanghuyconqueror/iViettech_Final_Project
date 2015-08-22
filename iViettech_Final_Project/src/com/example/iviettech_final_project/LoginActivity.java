@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	Button loginButton;
 	Button forgetPasswordButton;
 	TextView loginGuest;
+	CheckBox checkBoxKeep;
 
 	EditText username, password;
 
@@ -42,6 +44,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private static final String KEY_GENDER = "gender";
 	private static final String KEY_AGE = "age";
 	private static final String KEY_AVATAR = "avatar";
+	
+	SharedPreferences settings;
+	SharedPreferences.Editor editor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		setContentView(R.layout.activity_login);
 
+		settings = getApplicationContext().getSharedPreferences("UserPreferences", 0);
+    	editor = settings.edit();
+    	
+    	boolean isKeep = settings.getBoolean(KEY_IS_KEEP, false);
+    	if (isKeep) {
+    		startMainActivity();
+    	}
 		username = (EditText) findViewById(R.id.et_username);
 		password = (EditText) findViewById(R.id.et_password);
 
@@ -62,9 +74,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 		forgetPasswordButton.setOnClickListener(this);
 		loginGuest = (TextView) findViewById(R.id.tv_sign_guest);
 		loginGuest.setOnClickListener(this);
+		
+		checkBoxKeep = (CheckBox) findViewById(R.id.checkbox_keep);
 
 	}
-
 	private class LoginTask extends AsyncTask<Void, Void, Void> {
 
 		@Override
@@ -102,9 +115,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 								json_user.getString(KEY_AVATAR));   
 			        	
 			        	final String userLogin = json_user.getString(KEY_USERNAME);
-			        	SharedPreferences settings = getApplicationContext().getSharedPreferences("UserPreferences", 0);
-			        	SharedPreferences.Editor editor = settings.edit();
-			        	editor.putBoolean(KEY_IS_KEEP, true);
+			        	
+			        	if (checkBoxKeep.isChecked()) {
+			        		editor.putBoolean(KEY_IS_KEEP, true);
+			        	}
+			        	else {
+			        		editor.putBoolean(KEY_IS_KEEP, false);
+			        	}
 			        	editor.putString(KEY_USERNAME, json_user.getString(KEY_USERNAME));
 			        	editor.putString(KEY_PASSWORD, json_user.getString(KEY_PASSWORD));
 			        	editor.putString(KEY_EMAIL, json_user.getString(KEY_EMAIL));
@@ -115,6 +132,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			        	editor.putString(KEY_AGE, json_user.getString(KEY_AGE));
 			        	editor.putString(KEY_AVATAR, json_user.getString(KEY_AVATAR));
 			        	editor.apply();
+			        	
 			        	
 			        	runOnUiThread(new Runnable() {
 							
@@ -190,6 +208,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			break;
 		
 		case R.id.tv_sign_guest:
+			settings.edit().clear().commit();
 			startMainActivity();
 			break;
 		default:
@@ -202,6 +221,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
     	mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     	startActivity(mainActivity);
+    	finish();
 	}
 
 }

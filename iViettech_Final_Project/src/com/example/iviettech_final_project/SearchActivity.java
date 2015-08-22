@@ -13,11 +13,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.iviettech_final_project_database.DatabaseHandler;
@@ -43,6 +44,7 @@ public class SearchActivity extends Activity implements OnItemClickListener {
 	private ListView restaurantListView;
 	private RestaurantArrayAdapter restaurantArrayAdapter;
 	private ArrayList<Restaurant> restaurants;
+	private Button searchButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,23 @@ public class SearchActivity extends Activity implements OnItemClickListener {
 				R.layout.restaurant_listview, restaurants);
 		restaurantListView.setAdapter(restaurantArrayAdapter);
 		restaurantListView.setOnItemClickListener(this);
+		searchButton = (Button) findViewById(R.id.bt_search);
+		searchButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if (citySearch.getText().toString() == "") {
+					Toast.makeText(getApplicationContext(), "Hãy nhập thông tin để tìm kiếm!", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				else {
+					search();
+				}
+				
+				
+			}
+		});
+		searchButton.setBackgroundResource(R.drawable.ic_search);
 	}
 
 	@Override
@@ -156,7 +175,7 @@ public class SearchActivity extends Activity implements OnItemClickListener {
 
 	}
 
-	public void search(View v) {
+	public void search() {
 		restaurants.clear();
 		restaurantArrayAdapter.notifyDataSetChanged();
 		new SearchTask().execute();
